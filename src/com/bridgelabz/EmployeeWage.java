@@ -8,27 +8,29 @@ public class EmployeeWage {
     static int Wage_Per_Hour = 20;
 
     public static void main(String[] args) {
-        Random random = new Random();
-        int empCheck = random.nextInt(3);
-        int empHrs;
-        int salary;
-
-        switch (empCheck) {
-            case Is_Full_Time:
-                System.out.println("Employee Full Time wage");
-                empHrs = 8;
-                salary = (Wage_Per_Hour * empHrs);
-                System.out.println("Salary: " + salary);
-                break;
-            case Is_Part_Time:
-                System.out.println("Employee Part Time wage");
-                empHrs = 4;
-                salary = (Wage_Per_Hour * empHrs);
-                System.out.println("Salary: " + salary);
-                break;
-            default:
-                System.out.println("Employee is Absent");
+        int empHrs=0;
+        int salary=0;
+        int totalSalary=0;
+        for (int day = 1; day <= 20; day++) {
+            Random random = new Random();
+            int empCheck = random.nextInt(3);
+            switch (empCheck) {
+                case Is_Full_Time:
+                    System.out.println("Employee Full Time wage");
+                    empHrs = 8;
+                    break;
+                case Is_Part_Time:
+                    System.out.println("Employee Part Time wage");
+                    empHrs = 4;
+                    break;
+                default:
+                    System.out.println("Employee is Absent");
+            }
+            salary = Wage_Per_Hour * empHrs;
+            System.out.println("Day:"+day+"  "+"Salary:"+salary);
+            totalSalary=totalSalary+salary;
         }
+        System.out.println("Total salary: "+totalSalary);
 
     }
 }
