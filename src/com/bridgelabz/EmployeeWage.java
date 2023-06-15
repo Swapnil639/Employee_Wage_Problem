@@ -36,7 +36,7 @@ public class EmployeeWage {
             totalSalary = totalSalary + salary;
             totalEmpHr = totalEmpHr + empHrs;
         }
-        System.out.println("Total Employee Hrs:" + totalEmpHr + " " + " Days:" + day);
+        System.out.println("Total Employee Hrs:" + totalEmpHr + " " + "Total Working Days:" + day);
         System.out.println("Total salary: " + totalSalary);
 
     }
