@@ -5,8 +5,20 @@ import java.util.Random;
 public class EmployeeWage {
     public final static int Is_Full_Time = 1;
     public final static int Is_Part_Time = 2;
+    String company;
+    int empRatePerHour;
+    int numOfWorkingDays;
+    int maxHoursPerMonth;
+    int totalEmpWage=0;
 
-    public static int computeEmployeeWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+    public EmployeeWage(String company, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+        this.company = company;
+        this.empRatePerHour = empRatePerHour;
+        this.numOfWorkingDays = numOfWorkingDays;
+        this.maxHoursPerMonth = maxHoursPerMonth;
+    }
+
+    public void computeEmployeeWage() {
         int totalEmpHrs = 0, totalWorkingDays = 0;
         while (totalEmpHrs <= maxHoursPerMonth && totalWorkingDays < numOfWorkingDays) {
             totalWorkingDays++;
@@ -28,13 +40,27 @@ public class EmployeeWage {
             totalEmpHrs += empHrs;
             System.out.println("Day " +totalWorkingDays+  " :"  + " " + "Emp Hrs : " + empHrs);
         }
-        int totalEmpWage = totalEmpHrs * empRatePerHour;
-        System.out.println("Total Employee wage for company : " + company + " is :" + totalEmpWage);
-        return totalEmpWage;
+        totalEmpWage = totalEmpHrs * empRatePerHour;
+        System.out.println("Total employee wage for company : " + company + " " + "is:" + totalEmpWage);
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeWage{" +
+                "company='" + company + '\'' +
+                ", empRatePerHour=" + empRatePerHour +
+                ", numOfWorkingDays=" + numOfWorkingDays +
+                ", maxHoursPerMonth=" + maxHoursPerMonth +
+                '}';
     }
 
     public static void main(String[] args) {
-        computeEmployeeWage("TCS", 20, 2, 10);
-        computeEmployeeWage("INFOSYS", 10, 3, 20);
+        EmployeeWage tcs=new EmployeeWage("TCS", 20, 2, 10);
+        tcs.computeEmployeeWage();
+        System.out.println(tcs);
+
+        EmployeeWage infosys=new EmployeeWage("INFOSYS", 10, 3, 20);
+        infosys.computeEmployeeWage();
+        System.out.println(infosys);
     }
 }
