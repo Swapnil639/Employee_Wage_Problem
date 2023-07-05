@@ -1,6 +1,6 @@
 package com.bridgelabz;
 
-interface IEmpWage {
+interface IEmpWage{
     public void addCompanyEmpWage(String companyName, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth);
 
     public void computeEmpWage();

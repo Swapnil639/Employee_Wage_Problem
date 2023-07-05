@@ -5,21 +5,12 @@ import java.util.ArrayList;
 public class EmployeeWage {
     public static final int IS_PART_TIME = 1;
     public static final int IS_FULL_TIME = 2;
-    static ArrayList<CompanyEmpWage> companyEmpWageArray = new ArrayList<CompanyEmpWage>();
+
     private int numOfCompany = 0;
-
-    public static void main(String[] args) {
-        EmployeeWage empWage = new EmployeeWage();
-        System.out.println("Welcome to EmployeeWage");
-        empWage.addCompanyEmpWage("AMAZON", 20, 20, 100);
-        empWage.addCompanyEmpWage("FLIPKART", 10, 15, 100);
-        empWage.addCompanyEmpWage("MYNTRA", 25, 20, 80);
-        empWage.computeEmpWage();
-    }
-
+    static ArrayList<CompanyEmpWage>companyEmpWageArray = new ArrayList<CompanyEmpWage>();
 
     public void addCompanyEmpWage(String companyName, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth) {
-        CompanyEmpWage companyEmpWage = new CompanyEmpWage(companyName, empRatePerHr, numOfWorkingDays, maxHoursPerMonth);
+        CompanyEmpWage companyEmpWage  = new CompanyEmpWage(companyName, empRatePerHr, numOfWorkingDays, maxHoursPerMonth);
         companyEmpWageArray.add(companyEmpWage);
     }
 
@@ -54,9 +45,17 @@ public class EmployeeWage {
             int empWage = empHrs * companyEmpWage.getEmpRatePerHr();
             totalEmpHrs += empHrs;
             totalEmpWage += empWage;
+            System.out.println("Day#" + totalWorkingDays + "Emp Hrs: " + empHrs + "Emp Wage: " + empWage);
         }
         return totalEmpWage;
     }
-
+    public static void main(String[] args) {
+        EmployeeWage empWage = new EmployeeWage();
+        System.out.println("Welcome to EmployeeWage");
+        empWage.addCompanyEmpWage("AMAZON", 20, 20, 100);
+        empWage.addCompanyEmpWage("FLIPKART", 10, 15, 100);
+        empWage.addCompanyEmpWage("MYNTRA", 25, 20,80);
+        empWage.computeEmpWage();
+    }
 
 }
