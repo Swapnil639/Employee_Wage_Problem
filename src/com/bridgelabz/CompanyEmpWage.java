@@ -1,15 +1,21 @@
 package com.bridgelabz;
 
+interface IEmpWage {
+    public void addCompanyEmpWage(String companyName, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth);
+
+    public void computeEmpWage();
+}
+
 public class CompanyEmpWage {
     private String companyName;
-    private int empRatePerHour;
+    private int empRatePerHr;
     private int numOfWorkingDays;
     private int maxHoursPerMonth;
     private int totalEmpWage;
 
-    public CompanyEmpWage(String companyName, int empRatePerHour, int numOfWorkingDays, int maxHoursPerMonth) {
+    public CompanyEmpWage(String companyName, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth) {
         this.companyName = companyName;
-        this.empRatePerHour = empRatePerHour;
+        this.empRatePerHr = empRatePerHr;
         this.numOfWorkingDays = numOfWorkingDays;
         this.maxHoursPerMonth = maxHoursPerMonth;
     }
@@ -22,12 +28,12 @@ public class CompanyEmpWage {
         this.companyName = companyName;
     }
 
-    public int getEmpRatePerHour() {
-        return empRatePerHour;
+    public int getEmpRatePerHr() {
+        return empRatePerHr;
     }
 
-    public void setEmpRatePerHour(int empRatePerHour) {
-        this.empRatePerHour = empRatePerHour;
+    public void setEmpRatePerHr(int empRatePerHr) {
+        this.empRatePerHr = empRatePerHr;
     }
 
     public int getNumOfWorkingDays() {
@@ -58,7 +64,7 @@ public class CompanyEmpWage {
     public String toString() {
         return "CompanyEmpWage{" +
                 "companyName='" + companyName + '\'' +
-                ", empRatePerHour=" + empRatePerHour +
+                ", empRatePerHr=" + empRatePerHr +
                 ", numOfWorkingDays=" + numOfWorkingDays +
                 ", maxHoursPerMonth=" + maxHoursPerMonth +
                 ", totalEmpWage=" + totalEmpWage +

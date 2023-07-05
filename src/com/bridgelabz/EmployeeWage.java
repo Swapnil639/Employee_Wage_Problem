@@ -1,12 +1,23 @@
 package com.bridgelabz;
 
-import java.util.Random;
+public class EmployeeWage implements IEmpWage {
+    public static final int IS_PART_TIME = 1;
+    public static final int IS_FULL_TIME = 2;
 
-public class EmployeeWage {
-    public final static int Is_Full_Time = 1;
-    public final static int Is_Part_Time = 2;
-    int numOfCompany = 0;
-    public CompanyEmpWage[] companyEmpWageArray=new CompanyEmpWage[2];
+    private int numOfCompany = 0;
+    private CompanyEmpWage[] companyEmpWageArray;
+
+    public EmployeeWage() {
+        companyEmpWageArray = new CompanyEmpWage[2];
+    }
+
+    public static void main(String[] args) {
+        EmployeeWage empWage = new EmployeeWage();
+        System.out.println("Welcome to EmployeeWage");
+        empWage.addCompanyEmpWage("AMAZON", 20, 20, 100);
+        empWage.addCompanyEmpWage("FLIPKART", 10, 15, 100);
+        empWage.computeEmpWage();
+    }
 
     public void addCompanyEmpWage(String companyName, int empRatePerHr, int numOfWorkingDays, int maxHoursPerMonth) {
         companyEmpWageArray[numOfCompany] = new CompanyEmpWage(companyName, empRatePerHr, numOfWorkingDays, maxHoursPerMonth);
@@ -22,35 +33,28 @@ public class EmployeeWage {
 
     public int computeEmpWage(CompanyEmpWage companyEmpWage) {
 
-        int empHrs = 0, totalEmpHrs = 0, totalEmpWage = 0, totalWorkingDays = 0;
-
+        int empHrs = 0;
+        int totalEmpHrs = 0;
+        int totalEmpWage = 0;
+        int totalWorkingDays = 0;
 
         while (totalWorkingDays <= companyEmpWage.getNumOfWorkingDays() && totalEmpHrs < companyEmpWage.getMaxHoursPerMonth()) {
             totalWorkingDays++;
             double empCheck = (int) Math.floor(Math.random() * 10) % 3;
             switch ((int) empCheck) {
-                case Is_Full_Time:
+                case IS_FULL_TIME:
                     empHrs = 8;
                     break;
-                case Is_Part_Time:
+                case IS_PART_TIME:
                     empHrs = 4;
                     break;
                 default:
                     empHrs = 0;
             }
-            int empWage = empHrs * companyEmpWage.getEmpRatePerHour();
+            int empWage = empHrs * companyEmpWage.getEmpRatePerHr();
             totalEmpHrs += empHrs;
             totalEmpWage += empWage;
-
         }
         return totalEmpWage;
-    }
-
-    public static void main(String[] args) {
-        EmployeeWage employeeWage = new EmployeeWage();
-        employeeWage.addCompanyEmpWage("TCS", 20, 20, 100);
-        employeeWage.addCompanyEmpWage("INFOSYS", 10, 15, 90);
-        employeeWage.computeEmpWage();
-
     }
 }
